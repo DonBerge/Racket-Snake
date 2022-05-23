@@ -90,7 +90,7 @@
                           )
   )
 
-(define (handle-keyboard s k) (cond [(key=? k (oposite (game-last-key s))) s]
+(define (handle-keyboard s k) (cond [(key=? (string-downcase k) (oposite (game-last-key s))) s]
                                     [else (make-game k (game-snake s) (game-fruits s) (game-points s))]
                                     )
   )
@@ -141,7 +141,6 @@
                                         (< ALTO (+ (posn-y snake-head) (/ ALTO-SERPIENTE 2)))
                                         (< ANCHO (+ (posn-x snake-head) (/ ANCHO-SERPIENTE 2)))
                                         )
-                                        d
   )
 
 (define (escena-juego s) (place-image (text (number->string (game-points s)) 20 "black") (/ ANCHO 2) 20 (draw-fruits (game-fruits s) (draw-snake (game-snake s)))))
